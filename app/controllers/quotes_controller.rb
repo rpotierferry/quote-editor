@@ -16,9 +16,10 @@ class QuotesController < ApplicationController
     if @quote.save
       redirect_to quote_path(@quote), notice: "Quote successfully created"
     else
-      render :new
+      render :new, :unprocessable_entity
     end
   end
+
   def edit
   end
 
@@ -26,7 +27,7 @@ class QuotesController < ApplicationController
     if @quote.update(quote_params)
       redirect_to quote_path(@quote), notice: "Quote successfully updated"
     else
-      render :edit
+      render :edit, :unprocessable_entity
     end
   end
 
